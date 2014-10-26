@@ -1,34 +1,12 @@
-docker-octopress
-================
+docker-jekyll
+=============
 
-Customize to your octopress project (Dockerfile)
---------------------------------------
+## Customize your locales
 
-##Locale
+    RUN locale-gen en_GB.UTF-8
+    ENV LANG en_GB.UTF-8
+    ENV LC_CTYPE en_GB.UTF-8
 
-Set the locale of your octopress project:
-
-    # Set correct local
-    RUN locale-gen es_ES.UTF-8
-    ENV LANG es_ES.UTF-8
-    ENV LC_CTYPE es_ES.UTF-8
-
-
-##Octopress project
-
-Change the line in the Dockerfile to your octopress project (So we install the correct gem versions)
-
-For example:
-
-    RUN git clone -b source https://github.com/ticketbis/ticketbis.github.io.git octopress
-
-To a fresh and new octopress:
-
-    RUN git clone git://github.com/imathis/octopress.git octopress
-
-Also is commented but if you have an octopress new fresh install you would like
-to uncomment default theme installation:
-    RUN rake install
 
 Run the container
 =================
@@ -37,6 +15,4 @@ Run the docker container (will be removed when exit), map localhost 4000 port to
 container 4000 port, and our /home/dordoka/Code/ path to /home/octopress/Code
 container path:
 
-    docker run --rm -it -p 4000:4000 -v /home/dordoka/Code/:/home/octopress/Code dordoka/octopress
-
-Example: https://asciinema.org/a/11050
+    docker run --rm -it -p 4000:4000 -v /home/dordoka/Code/:/home/jekyll/Code dordoka/jekyll
